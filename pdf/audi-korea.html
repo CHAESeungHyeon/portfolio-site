@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audi Korea 웹 리뉴얼 · CHAE SeungHyeon</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #0D0D0F; --dark3: #16213E;
+      --accent: #E94560; --white: #FFFFFF; --border: #1E293B;
+      --text: #CBD5E1; --muted: #475569;
+    }
+    body { font-family: 'Pretendard', sans-serif; background: var(--dark); color: var(--white); line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 64px;
+      background: rgba(13,13,15,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; color: var(--muted); transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--white); }
+    .nav-logo { font-weight: 700; font-size: 15px; letter-spacing: 0.12em; }
+    .nav-logo span { color: var(--accent); }
+
+    .portfolio-header {
+      padding: 120px 10vw 60px;
+      background: linear-gradient(135deg, #0a0f1e 0%, #1a2540 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .portfolio-label { font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .portfolio-title { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .portfolio-desc { font-size: 15px; font-weight: 300; color: var(--text); max-width: 560px; }
+    .portfolio-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; }
+    .portfolio-meta-item { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .portfolio-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+
+    .pdf-section { padding: 48px 10vw; background: #080810; }
+    .pdf-loading {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 80px 0; gap: 16px; color: var(--muted); font-size: 14px;
+    }
+    .pdf-spinner {
+      width: 36px; height: 36px; border: 2px solid var(--border);
+      border-top-color: var(--accent); border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #pdf-viewer { width: 100%; }
+    #pdf-viewer canvas { display: block; width: 100%; height: auto; border-bottom: 2px solid var(--border); }
+
+    .link-section {
+      padding: 60px 10vw 72px;
+      background: var(--dark);
+      display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;
+    }
+    .link-section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .btn-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 40px; border-radius: 4px;
+      background: var(--accent); color: var(--white);
+      font-size: 15px; font-weight: 700; letter-spacing: 0.05em;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-link:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 28px 10vw;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy { font-size: 12px; color: var(--muted); }
+    .footer-made { font-size: 12px; color: var(--muted); }
+    .footer-made span { color: var(--accent); }
+
+    .portfolio-header-inner { display: flex; align-items: center; gap: 60px; }
+    .portfolio-header-text { flex: 1; min-width: 0; }
+    .portfolio-header-thumb { width: 44%; flex-shrink: 0; }
+    .portfolio-header-thumb img {
+      width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    @media (max-width: 900px) {
+      .portfolio-header-inner { flex-direction: column; }
+      .portfolio-header-thumb { width: 100%; }
+    }
+    @media (max-width: 768px) {
+      .portfolio-header { padding: 100px 6vw 48px; }
+      .pdf-section { padding: 32px 4vw; }
+      .link-section { padding: 48px 6vw 60px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+      nav { padding: 0 4vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      목록으로
+    </a>
+    <div class="nav-logo">CHAE<span>.</span></div>
+  </nav>
+
+  <div class="portfolio-header">
+    <div class="portfolio-header-inner">
+      <div class="portfolio-header-text">
+        <div class="portfolio-label">Project · UX/UI / Automotive</div>
+        <h1 class="portfolio-title">Audi Korea 웹 리뉴얼</h1>
+        <p class="portfolio-desc">사용자 선택 흐름을 개선하고 프리미엄 브랜드 경험을 극대화한 아우디 코리아 웹 UX 프로젝트</p>
+        <div class="portfolio-meta">
+          <div class="portfolio-meta-item"><div class="portfolio-meta-dot"></div>Figma</div>
+          <div class="portfolio-meta-item"><div class="portfolio-meta-dot"></div>과제 프로젝트</div>
+        </div>
+      </div>
+      <div class="portfolio-header-thumb">
+        <img src="../img/a6-etron.png" alt="Audi Korea">
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-section">
+    <div id="pdf-loading" class="pdf-loading">
+      <div class="pdf-spinner"></div>
+      <span>포트폴리오 불러오는 중...</span>
+    </div>
+    <div id="pdf-viewer"></div>
+  </div>
+
+  <div class="link-section">
+    <div class="link-section-label">프로젝트 사이트 방문하기</div>
+    <a href="https://chaeseunghyeon.github.io/portfolio-audikorea/" class="btn-link" target="_blank" rel="noopener">
+      사이트 들어가기
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-copy">© 2026 CHAE SeungHyeon. All rights reserved.</div>
+    <div class="footer-made">Creative Designer <span>·</span> UI/UX <span>·</span> Seoul, Korea</div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    (async () => {
+      const viewer = document.getElementById('pdf-viewer');
+      const loading = document.getElementById('pdf-loading');
+      try {
+        const pdf = await pdfjsLib.getDocument('./audi-korea.pdf').promise;
+        loading.style.display = 'none';
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const base = page.getViewport({ scale: 1 });
+          const dpr = window.devicePixelRatio || 1;
+          const scale = (viewer.clientWidth / base.width) * dpr;
+          const vp = page.getViewport({ scale });
+          const canvas = document.createElement('canvas');
+          canvas.width = vp.width;
+          canvas.height = vp.height;
+          canvas.style.width = '100%';
+          canvas.style.height = 'auto';
+          viewer.appendChild(canvas);
+          await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+        }
+      } catch (e) {
+        loading.innerHTML = '<p style="color:#475569">PDF를 불러올 수 없습니다. <a href="./audi-korea.pdf" style="color:#E94560">직접 다운로드</a></p>';
+      }
+    })();
+  </script>
+</body>
+</html>
