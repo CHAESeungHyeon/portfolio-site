@@ -9,7 +9,7 @@
 
 ## 🖥️ 미리보기
 
-![banner](./img/portfolio-site-banner)
+![banner](./img/portfolio-site-banner.png)
 
 ---
 
