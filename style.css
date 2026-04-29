@@ -313,12 +313,12 @@ section { padding: 100px 10vw; }
   background: #080810;
   text-align: center;
 }
-.contact-inner { max-width: 640px; margin: 0 auto; }
+.contact-inner { max-width: 900px; margin: 0 auto; }
 .contact-desc {
   font-size: 18px; font-weight: 300; color: var(--text); line-height: 1.8;
   margin-bottom: 48px;
 }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
 .contact-item {
   display: flex; align-items: center; gap: 14px;
   padding: 20px 24px; border-radius: 8px;
@@ -367,6 +367,7 @@ footer {
   section { padding: 72px 6vw; }
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
   .contact-grid { grid-template-columns: 1fr; }
+  .contact-inner { max-width: 100%; }
   .work-grid { grid-template-columns: 1fr; }
   .hero-btns { flex-direction: column; }
   footer { flex-direction: column; gap: 8px; text-align: center; }
