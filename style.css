@@ -9,7 +9,7 @@
 /* ─── RESET & BASE ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --dark:    #0D0D0F;
+  --dark:    #080810;
   --dark2:   #1A1A2E;
   --dark3:   #16213E;
   --accent:  #E94560;
@@ -67,6 +67,7 @@ nav {
 
 /* ─── HERO ─── */
 #hero {
+  width: 100%;
   min-height: 100vh;
   display: flex; align-items: center;
   padding: 100px 10vw 80px;
@@ -74,11 +75,12 @@ nav {
   overflow: hidden;
 }
 .hero-bg {
+  width: 100%;;
   position: absolute; inset: 0;
   background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(139,92,246,0.15) 0%, transparent 70%),
               radial-gradient(ellipse 50% 70% at 20% 80%, rgba(233,69,96,0.12) 0%, transparent 60%);
 }
-.hero-content { position: relative; z-index: 1; width: 100%; }
+.hero-content { position: relative; z-index: 1; width: 1200px; margin: auto; }
 .hero-label {
   display: inline-block;
   font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
@@ -139,7 +141,10 @@ nav {
 @keyframes scrollPulse { 0%,100% { opacity: 0.3; transform: scaleY(0.6); } 50% { opacity: 1; transform: scaleY(1); } }
 
 /* ─── SECTION BASE ─── */
-section { padding: 100px 10vw; }
+section { 
+  width: 1200px;
+  margin: auto;
+  padding: 100px 0; }
 .section-label {
   font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase;
   color: var(--accent); margin-bottom: 16px;
@@ -154,7 +159,7 @@ section { padding: 100px 10vw; }
 /* ─── ABOUT ─── */
 #about { background: var(--dark); }
 .about-grid {
-  display: grid; grid-template-columns: 0.5fr 1fr;
+  display: grid; grid-template-columns: 1fr 1fr;
   gap: 80px; align-items: start;
 }
 .about-photo-wrap { position: relative; }
@@ -183,7 +188,7 @@ section { padding: 100px 10vw; }
   background: linear-gradient(to bottom, var(--accent), var(--purple));
   border-radius: 2px;
 }
-.about-info { display: flex; flex-direction: column; gap: 28px; }
+.about-info { display: flex; flex-direction: column; gap: 40px; }
 .about-tagline {
   font-size: 22px; font-weight: 300; color: var(--text); line-height: 1.7;
 }
