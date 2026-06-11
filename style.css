@@ -190,9 +190,9 @@ section {
 }
 .about-info { display: flex; flex-direction: column; gap: 40px; }
 .about-tagline {
-  font-size: 22px; font-weight: 300; color: var(--text); line-height: 1.7;
+  font-size: 24px; font-weight: 300; color: var(--text); line-height: 1.7;
 }
-.about-tagline strong { color: var(--white); font-weight: 700; }
+.about-tagline strong { color: var(--white); font-weight: 700; font-size: 28px; }
 .about-details {
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
 }
